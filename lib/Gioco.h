@@ -14,9 +14,13 @@
  * Assegna da 0 a 4 caselle ad ogni giocatore
  * @param giocatori il vettore di giocatori
  * @param numero_giocatori il numero di giocatori
+ * @param tabellone il tabellone contenente le caselle
+ * @param dimensione_tabelloen la dimensione del tabellone
  * @returns il numero di caselle assegnate
  */
-int assegna_caselle_ai_giocatori(Giocatore *giocatori[], int numero_giocatori);
+int assegna_caselle_ai_giocatori(Giocatore *giocatori[], int numero_giocatori,
+                                 Colore const tabellone[],
+                                 int dimensione_tabellone);
 
 /**
  * Esegue un turno del gioco per un singolo giocatore

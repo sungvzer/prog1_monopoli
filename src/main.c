@@ -22,7 +22,6 @@
 #include <Definizioni.h>
 #include <Giocatore.h>
 #include <Gioco.h>
-#include <Tabellone.h>
 #include <Terminale.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -32,6 +31,12 @@
 int main(int argc, char* argv[]) {
   // Imposta il seed iniziale per il generatore casuale di numeri
   srand(time(0));
+
+  const Colore tabellone[] = {
+      Bianco, Arancione, Arancione, Arancione, Rosso,   Verde,   Verde,
+      Nero,   Azzurro,   Azzurro,   Rosso,     Viola,   Viola,   Viola,
+      Rosso,  Verde,     Verde,     Nero,      Azzurro, Azzurro,
+  };
 
   Giocatore* giocatori[NumeroGiocatori];
 
@@ -45,9 +50,10 @@ int main(int argc, char* argv[]) {
     aggiungi_giocatore(giocatori, nuovo_giocatore, i);
   }
 
-  assegna_caselle_ai_giocatori(giocatori, NumeroGiocatori);
+  assegna_caselle_ai_giocatori(giocatori, NumeroGiocatori, tabellone,
+                               DimensioneTabellone);
   printf("Assegnate le seguenti caselle:\n");
-  stampa_tabellone_con_giocatori(s_tabellone, DimensioneTabellone, giocatori,
+  stampa_tabellone_con_giocatori(tabellone, DimensioneTabellone, giocatori,
                                  NumeroGiocatori);
 
   printf("\n");
@@ -58,7 +64,7 @@ int main(int argc, char* argv[]) {
   // (hanno saldo <= 0)
   int indice_giocatore = 0;
   for (int i = 0; i < 6; i++) {
-    if (!gioca_turno(giocatori, NumeroGiocatori, indice_giocatore, s_tabellone,
+    if (!gioca_turno(giocatori, NumeroGiocatori, indice_giocatore, tabellone,
                      DimensioneTabellone))
       break;
     indice_giocatore = (indice_giocatore + 1) % NumeroGiocatori;

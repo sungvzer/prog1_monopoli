@@ -10,6 +10,9 @@
 #define DimensioniCaselle 4
 #define NumeroGiocatori 6
 
+/** Il numero di caselle all'interno del tabellone */
+#define DimensioneTabellone 20
+
 /**
  * Definisce l'associazione tra un colore e il suo corrispettivo valore
  */

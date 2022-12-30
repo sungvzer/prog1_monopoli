@@ -7,7 +7,6 @@
 #include <Dado.h>
 #include <Giocatore.h>
 #include <Gioco.h>
-#include <Tabellone.h>
 #include <Terminale.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -24,14 +23,16 @@ void copia_tabellone(Colore destinazione[], int dimensione_destinazione,
   }
 }
 
-int assegna_caselle_ai_giocatori(Giocatore *giocatori[], int numero_giocatori) {
+int assegna_caselle_ai_giocatori(Giocatore *giocatori[], int numero_giocatori,
+                                 Colore const tabellone[],
+                                 int dimensione_tabellone) {
   int tot_caselle_assegnate = 0;
   int caselle_da_assegnare_al_giocatore;
   int indice_tabellone = 0;
   Colore nuovo_tabellone[DimensioneTabellone];
 
-  copia_tabellone(nuovo_tabellone, DimensioneTabellone, s_tabellone,
-                  DimensioneTabellone);
+  copia_tabellone(nuovo_tabellone, DimensioneTabellone, tabellone,
+                  dimensione_tabellone);
 
   for (int ind = 0; ind < numero_giocatori; ind++) {
     // Per ogni giocatore
